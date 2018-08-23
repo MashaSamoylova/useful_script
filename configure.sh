@@ -1,4 +1,4 @@
-command -v vim || yum install -y vim || apt install -y vim
+command -v vim || yum install -y vim || apt install -y vim-gtk
 command -v xsel || yum install -y xsel || apt install -y xsel
 echo "set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin() 
