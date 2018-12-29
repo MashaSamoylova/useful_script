@@ -41,23 +41,6 @@ inoremap <silent> <C-j> <C-O>dd<Down><C-R><C-P>\"<Up>
 nnoremap <silent> <C-j> dd<Down>i<C-R><C-P>\"<Esc><Up>
 nnoremap <F3> :set hlsearch!<CR>
 
-digraphs => 8658
-digraphs SE 167
-digraphs -! 8593
-digraphs -> 8594
-digraphs jz 8618
-digraphs nz 8614
-digraphs xr 8853
-digraphs >= 8805
-digraphs =< 8804
-digraphs != 8800
-digraphs mx 8315
-digraphs NO 172
-digraphs NB 8711
-digraphs DE 8710
-digraphs OR 8744
-digraphs == 8660
-
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-H> :Hexmode<CR>
 inoremap <C-H> <Esc>:Hexmode<CR>
@@ -65,53 +48,8 @@ vnoremap <C-H> :<C-U>Hexmode<CR>
 
 command -bar Hexmode call ToggleHex()
 
-function ToggleHex()
-  let l:modified=&mod
-  let l:oldreadonly=&readonly
-  let &readonly=0
-  let l:oldmodifiable=&modifiable
-  let &modifiable=1
-  if !exists(\"b:editHex\") || !b:editHex
-    \" save old options
-    let b:oldft=&ft
-    let b:oldbin=&bin
-    \" set new options
-    setlocal binary \" make sure it overrides any textwidth, etc.
-    silent :e \" this will reload the file without trickeries 
-              \"(DOS line endings will be shown entirely )
-    let &ft=\"xxd\"
-    \" set status
-    let b:editHex=1
-    \" switch to hex editor
-    %!xxd
-  else
-    \" restore old options
-    let &ft=b:oldft
-    if !b:oldbin
-      setlocal nobinary
-    endif
-    \" set status
-    let b:editHex=0
-    \" return to normal editing
-    %!xxd -r
-  endif
-  \" restore values for modified and read only state
-  let &mod=l:modified
-  let &readonly=l:oldreadonly
-  let &modifiable=l:oldmodifiable
-endfunction
-
-augroup Binary
-  au!
-  au BufReadPre  *.bin let &bin=1
-  au BufReadPost *.bin if &bin | %!xxd
-  au BufReadPost *.bin set ft=xxd | endif
-  au BufWritePre *.bin if &bin | %!xxd -r
-  au BufWritePre *.bin endif
-  au BufWritePost *.bin if &bin | %!xxd
-  au BufWritePost *.bin set nomod | endif
 augroup END
-" >> ~/.vimrc
+" > ~/.vimrc
 command -v git || yum install -y git || apt install -y git
 command -v curl || yum install -y curl || apt install -y curl
 mkdir -p ~/.vim/bundle/
