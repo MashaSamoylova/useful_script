@@ -8,10 +8,8 @@ The script now supports only debian-based/ubunti linux distributions
 Vim become filled with plugins:
 <ol>
     <li>Hit `CTRL-n` to open NerdTree and navigate through files
-    <li>Hit `CTRL-h` to open HexMode and redact hex of the file
     <li>Hit `TAB` to use autocomplition
     <li>Hit `F3` to turn off highlited text after searching and stuff
-    <li>Hit `F7` to run pylint over your python script
     <li>You can now use digraphs by pressing CTRL-k in insert mod (for all LYAPAS programmers out there)
 </ol>
 # Transfer
