@@ -45,9 +45,9 @@ nnoremap <C-H> :Hexmode<CR>
 inoremap <C-H> <Esc>:Hexmode<CR>
 vnoremap <C-H> :<C-U>Hexmode<CR>
 
-command -bar Hexmode call ToggleHex()
-
 augroup END
+set backspace=indent,eol,start
+
 " > ~/.vimrc
 command -v git || yum install -y git || apt install -y git
 command -v curl || yum install -y curl || apt install -y curl
